@@ -33,3 +33,23 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+
+INSTALLED_APPS += (
+    'djangobower',
+)
+
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'web/static/')
+
+STATICFILES_FINDERS += (
+    'djangobower.finders.BowerFinder',
+)
+
+
+BOWER_INSTALLED_APPS = (
+    'angular#v1.3.0-rc.0',
+    'angular-resource#v1.3.0-rc.0',
+    'angular-route#v1.3.0-rc.0',
+    'angular-file-upload#v1.1.1',
+    'bootstrap#v3.2.0',
+)
