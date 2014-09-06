@@ -6,5 +6,5 @@ from api.sample.views import SampleApiView
 
 urlpatterns = patterns(
     '',
-    url(r'^$', SampleApiView.as_view(), name='api_sample'),
+    url(r'^sample/$', SampleApiView.as_view(), name='api_sample'),
 )

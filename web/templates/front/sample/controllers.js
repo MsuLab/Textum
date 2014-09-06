@@ -1,5 +1,5 @@
 'use strict';
 
-TextumApp.controller("SampleCtrl", function($scope, $log) {
-    $scope.sample = "This is sample!";
+TextumApp.controller("SampleCtrl", function($scope, SampleResource, $log) {
+    $scope.sample = SampleResource.get()
 });

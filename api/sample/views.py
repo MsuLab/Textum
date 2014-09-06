@@ -6,7 +6,7 @@ class SampleApiView(ApiView):
         return self.render_json_response({'api_post': 'It works!'})
 
     def get(self, request):
-        return self.render_json_response({'api_get': 'It works!'})
+        return self.render_json_response({'text': 'This sample text from api!'})
 
     def patch(self, request):
         return self.render_json_response({'api_patch': 'It works!'})
