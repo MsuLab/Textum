@@ -1,10 +1,10 @@
 # -*- coding:utf-8 -*-
 from django.conf.urls import patterns, url
 
-from api.views import TestView
+from api.sample.views import SampleApiView
 
 
 urlpatterns = patterns(
     '',
-    url(r'^$', TestView.as_view(), name='api_test'),
+    url(r'^$', SampleApiView.as_view(), name='api_sample'),
 )
