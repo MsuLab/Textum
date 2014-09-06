@@ -10,10 +10,11 @@ from web import urls as web_urls
 
 urlpatterns = patterns(
     '',
-    url(r'^$', FrontView.as_view(), name='front'),
     url(r'^web/', include(web_urls, namespace='web')),
 
     url(r'^api/', include(api_urls, namespace='api_urls')),
+
+    url(r'^site/', FrontView.as_view(), name='front'),
 
     # url(r'^upload/', include(upload, namespace='upload')),
 )

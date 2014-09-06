@@ -37,12 +37,14 @@ DATABASES = {
 
 INSTALLED_APPS += (
     'djangobower',
+    'compressor',
 )
 
 BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'web/static/')
 
 STATICFILES_FINDERS += (
     'djangobower.finders.BowerFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 
@@ -50,6 +52,15 @@ BOWER_INSTALLED_APPS = (
     'angular#v1.3.0-rc.0',
     'angular-resource#v1.3.0-rc.0',
     'angular-route#v1.3.0-rc.0',
+    'angular-cookies#v1.3.0-rc.0',
+    'angular-sanitize#v1.3.0-rc.0',
+    'angular-animate#v1.3.0-rc.0',
+
     'angular-file-upload#v1.1.1',
+    'angular-loading-bar#v0.5.2',
+    'ngDialog#0.2.13',
+
     'bootstrap#v3.2.0',
+    'html5shiv#v3.7.2',
+    'respond#1.4.2',
 )

@@ -3,3 +3,4 @@ django==1.7
 django-braces==1.4.0
 
 django-bower==5.0.1
+django-compressor==1.4
