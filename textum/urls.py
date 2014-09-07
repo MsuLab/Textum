@@ -10,12 +10,17 @@ from web import urls as web_urls
 
 urlpatterns = patterns(
     '',
+    # Single Page Application Landing Page
+    url(r'^$', FrontView.as_view()),
+    url(r'^site/', FrontView.as_view(), name='client'),
+
+    # Web Templates
     url(r'^web/', include(web_urls, namespace='web')),
 
-    url(r'^api/', include(api_urls, namespace='api_urls')),
+    # API Routes
+    url(r'^api/', include(api_urls, namespace='api')),
 
-    url(r'^site/', FrontView.as_view(), name='front'),
-
+    # Uploads
     # url(r'^upload/', include(upload, namespace='upload')),
 )
 

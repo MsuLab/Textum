@@ -40,11 +40,21 @@ INSTALLED_APPS += (
     'compressor',
 )
 
-BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'web/static/')
-
 STATICFILES_FINDERS += (
     'djangobower.finders.BowerFinder',
     'compressor.finders.CompressorFinder',
+)
+
+SPA_ROOT = os.path.join(BASE_DIR, 'web/client/')
+
+BOWER_COMPONENTS_ROOT = SPA_ROOT
+
+STATICFILES_DIRS = (
+    SPA_ROOT,
+)
+
+TEMPLATE_DIRS = (
+    SPA_ROOT,
 )
 
 

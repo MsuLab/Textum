@@ -6,9 +6,9 @@ from django.views.generic.base import TemplateView
 
 
 class FrontView(TemplateView):
-    template_name = 'front/base.html'
+    template_name = 'base.html'
 
 
 # Templates:
 class SampleView(TemplateView):
-    template_name = 'front/sample/sample.html'
+    template_name = 'app/sample/sample.html'

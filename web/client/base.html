@@ -8,8 +8,12 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- vendor's styles -->
     <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
     <link href="{% static 'angular-loading-bar/build/loading-bar.min.css' %}" rel="stylesheet" media="screen">
+
+    <!-- project's styles -->
+    <link href="{% static 'content/css/styles.css' %}" rel="stylesheet" media="screen">
 
     {% block head_css %}{% endblock %}
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -18,7 +22,8 @@
         <script src="{% static 'respond/dest/respond.min.js' %}"></script>
     <![endif]-->
 
-    {% compress js %}
+    <!-- vendor's scripts -->
+    {# {% compress js %} #}
         <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
         <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
 
@@ -32,24 +37,24 @@
         <script src="{% static 'angular-file-upload/angular-file-upload.min.js' %}"></script>
         <script src="{% static 'angular-loading-bar/build/loading-bar.min.js' %}"></script>
         <script src="{% static 'ngDialog/js/ngDialog.min.js' %}"></script>
-    {% endcompress %}
+    {# {% endcompress %} #}
 
+    <!-- project's scripts -->
     {% block head_js %}
-        {% compress js %}
+        {# {% compress js %} #}
             <script>
-                {% include 'front/ng_main.js' %}
+                {% include 'app/app.js' %}
 
-                {% include 'front/sample/controllers.js' %}
-                {% include 'front/sample/services.js' %}
+                {% include 'app/sample/sample.controller.js' %}
+                {% include 'app/sample/sample.resource.js' %}
             </script>
-        {% endcompress %}
+        {# {% endcompress %} #}
     {% endblock %}
 
 </head>
 <body>
 <div class="wrapper">
     {% block container %}
-
         <h1>Front page. It works! <a href="/site/sample/">Check Sample</a></h1>
         <div ng-view></div>
     {% endblock %}
