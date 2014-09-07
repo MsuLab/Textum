@@ -66,6 +66,7 @@ BOWER_INSTALLED_APPS = (
     'angular-sanitize#v1.3.0-rc.0',
     'angular-animate#v1.3.0-rc.0',
 
+    'angular-ui-router#0.2.11',
     'angular-file-upload#v1.1.1',
     'angular-loading-bar#v0.5.2',
     'ngDialog#0.2.13',

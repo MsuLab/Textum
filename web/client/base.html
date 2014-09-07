@@ -34,6 +34,7 @@
         <script src="{% static 'angular-route/angular-route.min.js' %}"></script>
         <script src="{% static 'angular-resource/angular-resource.min.js' %}"></script>
 
+        <script src="{% static 'angular-ui-router/release/angular-ui-router.min.js' %}"></script>
         <script src="{% static 'angular-file-upload/angular-file-upload.min.js' %}"></script>
         <script src="{% static 'angular-loading-bar/build/loading-bar.min.js' %}"></script>
         <script src="{% static 'ngDialog/js/ngDialog.min.js' %}"></script>
@@ -43,7 +44,8 @@
     {% block head_js %}
         {# {% compress js %} #}
             <script>
-                {% include 'app/app.js' %}
+                {% include 'app/app.module.js' %}
+                {% include 'app/app.config.js' %}
 
                 {% include 'app/sample/sample.controller.js' %}
                 {% include 'app/sample/sample.resource.js' %}
@@ -55,8 +57,12 @@
 <body>
 <div class="wrapper">
     {% block container %}
-        <h1>Front page. It works! <a href="/site/sample/">Check Sample</a></h1>
-        <div ng-view></div>
+        <h1>Front page. It works! <a ui-sref="sample">Check Sample</a></h1>
+        <div ui-view></div>
+        <!-- We'll also add some navigation: -->
+        <a ui-sref="state1">State 1</a>
+        <a ui-sref="state2">State 2</a>
+        <a ui-sref="multi.root">multi</a>
     {% endblock %}
 </div>
 </body>
