@@ -11,8 +11,9 @@
 
             'ui.router',
 
-//            'angularFileUpload',
+            'angularFileUpload',
             'ngDialog',
+//            'blueimp.fileupload',
             'angular-loading-bar'
         ]);
 })();

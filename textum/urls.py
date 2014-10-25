@@ -4,7 +4,7 @@ from django.conf.urls import patterns, include, url
 
 from api import urls as api_urls
 
-from web.views import FrontView
+from web.views import FrontView, TextumView
 from web import urls as web_urls
 
 
@@ -13,6 +13,7 @@ urlpatterns = patterns(
     # Single Page Application Landing Page
     url(r'^$', FrontView.as_view()),
     url(r'^site/', FrontView.as_view(), name='client'),
+    url(r'^textum/', TextumView.as_view(), name='textum'),
 
     # Web Templates
     url(r'^web/', include(web_urls, namespace='web')),

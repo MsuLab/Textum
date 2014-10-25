@@ -1,0 +1,25 @@
+<div ng-controller="EditorController as vm" class="col-lg-6 leftView">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-xs-8">
+                <h3 id="headerForTexteditor">Текст</h3>
+            </div>
+            <div class="col-xs-4">
+                <a ng-click="vm.openTextFileUploadDialog()" class="btn btn-success btn-large" id="uploadButton">
+                    <span class="glyphicon glyphicon-upload"></span> Загрузить файл
+                </a>
+            </div>
+        </div>
+        <hr>
+        {% if is_odf %}
+        <div style="height: 634px; overflow: auto;" id="webodf-wrapper">
+            <div id="webodf-textarea">
+                <p>Нет текстового файла. Нажмите кнопку <b>"Загрузить файл"</b>.</p>
+            </div>
+        </div>
+        {% else %}
+        <textarea id="wysihtml5-textarea" placeholder="Введите текст ..."></textarea>
+        {% endif %}
+
+    </div>
+</div>

@@ -28,3 +28,17 @@ class State2ListView(TemplateView):
 
 class MultiView(TemplateView):
     template_name = 'app/sample/sample.tpl.multi.html'
+
+
+class TextumView(TemplateView):
+    template_name = 'app/textum/textum.main.html'
+
+
+class TextumBaseView(TemplateView):
+    template_name = 'app/textum/textum.tpl.base.html'
+
+class TextumEditorView(TemplateView):
+    template_name = 'app/textum/textum.tpl.editor.html'
+
+class TextumViewerView(TemplateView):
+    template_name = 'app/textum/textum.tpl.viewer.html'

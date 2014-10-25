@@ -67,9 +67,10 @@ BOWER_INSTALLED_APPS = (
     'angular-animate#v1.3.0-rc.0',
 
     'angular-ui-router#0.2.11',
-    'angular-file-upload#v1.1.1',
+    # 'angular-file-upload#v1.1.1',
     'angular-loading-bar#v0.5.2',
     'ngDialog#0.2.13',
+    'blueimp-file-upload#v9.8.0',
 
     'bootstrap#v3.2.0',
     'html5shiv#v3.7.2',
