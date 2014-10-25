@@ -5,9 +5,9 @@
         .module('TextumApp')
         .controller("ViewerController", ViewerController);
 
-    ViewerController.$inject = ['ngDialog', '$log'];
+    ViewerController.$inject = ['ngDialog', '$log', 'TextImageResource'];
 
-    function ViewerController (ngDialog, $log) {
+    function ViewerController (ngDialog, $log, TextImageResource) {
         var vm = this;
 
         vm.sample = {};
