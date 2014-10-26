@@ -1,5 +1,3 @@
-from django.contrib.auth.models import User, Group
-
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import detail_route
@@ -31,3 +29,13 @@ class TextImageViewSet(viewsets.ModelViewSet):
 
         serializer = self.serializer_class(obj)
         return Response(serializer.data)
+
+    def delete(self, request):
+        """
+        Delete all TextImage objects
+        """
+        ans = self.serializer_class(self.queryset, many=True).data
+        self.queryset.delete()
+
+        return Response(ans)
+

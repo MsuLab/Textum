@@ -2,43 +2,42 @@
 {% verbatim %}
 <div ng-controller="ViewerController as vm" class="col-lg-6 rightView">
     <div class="jumbotron">
-
         <h3>Рукопись</h3>
+
         <input id="isReversePagination" type="checkbox" checked> Оборотная пагинация.
+
         <hr/>
         <nav class="galleryMenu">
             <ul id="normal-view-menu">
                 <li>
                     <span ng-click="vm.openImagesUploadDialog()" class="btn btn-sm btn-success addImage"
                           title="Добавить страницы в галерею">
-                                <span class="glyphicon glyphicon-plus glyphicon-white"></span>
-                            </span>
+                        <span class="glyphicon glyphicon-plus glyphicon-white"></span>
+                    </span>
                 </li>
-
                 <li>
-                            <span class="btn btn-sm btn-info full-view-switch" title="Режим просмотра изображения">
-                                <span class="glyphicon glyphicon-stop"></span>
-                            </span>
+                    <span class="btn btn-sm btn-info full-view-switch" title="Режим просмотра изображения">
+                        <span class="glyphicon glyphicon-stop"></span>
+                    </span>
                 </li>
-
                 <!-- <li>
                     <a href="#" class="btn btn-sm btn-info">
                         <span class="glyphicon glyphicon-fullscreen"></span>
                     </a>
                 </li> -->
-
                 <li>
-                            <span class="btn btn-sm btn-danger clear-gallery" title="Очистить галерею">
-                                <span class="glyphicon glyphicon-trash glyphicon-white"></span>
-                            </span>
+                    <span class="btn btn-sm btn-danger clear-gallery" title="Очистить галерею"
+                            ng-click="vm.deleteAll()">
+                        <span class="glyphicon glyphicon-trash glyphicon-white"></span>
+                    </span>
                 </li>
             </ul>
 
             <ul id="full-view-menu" class="hidden">
                 <li>
-                            <span class="btn btn-sm btn-info normal-view-switch" title="Вернуться в режим галлереи">
-                                <span class="glyphicon glyphicon-th-large"></span>
-                            </span>
+                    <span class="btn btn-sm btn-info normal-view-switch" title="Вернуться в режим галлереи">
+                        <span class="glyphicon glyphicon-th-large"></span>
+                    </span>
                 </li>
                 <!--<li>
                     <a href="#" class="btn btn-sm btn-info">
@@ -58,6 +57,7 @@
             </ul>
 
         </nav>
+
         <!-- galleryMenu end -->
         <div class="photoGallery">
             <ul class="photoGrid">

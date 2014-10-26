@@ -13,6 +13,7 @@
         vm.sample = {};
         vm.openImagesUploadDialog = openImagesUploadDialog;
         vm.textImages = TextImageResource.query();
+        vm.deleteAll = deleteAll;
 
         activate();
         ////////////////////////////////////////
@@ -33,6 +34,12 @@
 
         function openImagesUploadDialog () {
             ngDialog.open({ template: 'imagesUploaderDialog.tpl' });
+        }
+
+        function deleteAll() {
+            TextImageResource.deleteAll(function (textImages) {
+                while(vm.textImages.length > 0) {vm.textImages.pop();}
+            })
         }
 
     }
