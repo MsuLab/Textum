@@ -4,6 +4,8 @@ from django.db import models
 
 from model_utils.models import TimeStampedModel
 from pytils import translit
+from imagekit.models import ImageSpecField
+from pilkit.processors import ResizeToFit
 
 
 def media_file_path(instance, filename):
@@ -26,6 +28,8 @@ class TextDocument(TimeStampedModel):
 class TextImage(TimeStampedModel):
     image = models.ImageField(upload_to=media_file_path)
     page_number = models.IntegerField(blank=True, null=True)
+    image_medium = ImageSpecField((ResizeToFit(150, 150),), format='JPEG', options={'quality': 90}, source='image')
+    image_small = ImageSpecField((ResizeToFit(101, 101),), format='JPEG', options={'quality': 90}, source='image')
 
     def get_path_parts(self):
         return 'text_image', self.id

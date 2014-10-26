@@ -3,7 +3,7 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-from api import urls as api_urls
+from api.urls import api_urls
 
 from web.views import FrontView, TextumView
 from web import urls as web_urls
@@ -11,6 +11,9 @@ from web import urls as web_urls
 
 urlpatterns = patterns(
     '',
+    # API Routes
+    url(r'^api/', include(api_urls)),
+
     # Single Page Application Landing Page
     url(r'^$', FrontView.as_view()),
     url(r'^site/', FrontView.as_view(), name='client'),
@@ -19,10 +22,6 @@ urlpatterns = patterns(
     # Web Templates
     url(r'^web/', include(web_urls, namespace='web')),
 
-    # API Routes
-    url(r'^api/', include(api_urls.router.urls)),
-
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
     # Uploads
     # url(r'^upload/', include(upload, namespace='upload')),
 )

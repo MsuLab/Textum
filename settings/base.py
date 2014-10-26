@@ -38,7 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'api',
-    'api.sample',
     'api.textum',
 
     'web',

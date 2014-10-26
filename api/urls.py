@@ -1,17 +1,12 @@
 # -*- coding:utf-8 -*-
 from django.conf.urls import patterns, url, include
 
-from rest_framework import routers
-
-from api.sample.views import SampleApiView
-from api.textum import views
+from api.textum.urls import textum_router
 
 
-router = routers.DefaultRouter()
-router.register(r'text-documents', views.TextDocumentViewSet)
-router.register(r'text-images', views.TextImageViewSet)
+api_urls = textum_router.urls
 
-urlpatterns = patterns(
+api_urls += patterns(
     '',
-    url(r'^sample/$', SampleApiView.as_view(), name='sample'),
+    url(r'^auth/', include('rest_framework.urls', namespace='rest_framework')),
 )

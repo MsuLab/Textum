@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class TextumAppConfig(AppConfig):
     name = 'api.textum'
-    label = 'textum'
+    verbose_name = "Textum"
