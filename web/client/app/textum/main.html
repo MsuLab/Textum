@@ -21,16 +21,15 @@
 
 {% block head_js %}
     <script>
-        {% include 'app/textum/textum.module.js' %}
-        {% include 'app/textum/textum.config.js' %}
+        {% include 'app/textum/module.js' %}
+        {% include 'app/textum/config.js' %}
 
-        {% include 'app/textum/textum.editor.controller.js' %}
-        {% include 'app/textum/textum.text-file-uploader.controller.js' %}
+        {% include 'app/textum/editor/editor.controller.js' %}
+        {% include 'app/textum/editor/text-file-uploader.controller.js' %}
 
-        {% include 'app/textum/textum.viewer.controller.js' %}
-        {% include 'app/textum/textum.images-uploader.controller.js' %}
-
-        {% include 'app/textum/textum.text-image.resource.js' %}
+        {% include 'app/textum/viewer/viewer.controller.js' %}
+        {% include 'app/textum/viewer/images-uploader.controller.js' %}
+        {% include 'app/textum/viewer/text-image.resource.js' %}
 
     </script>
 {% endblock %}
@@ -72,8 +71,8 @@
 {% endblock %}
 
 {% block container %}
-    {% include 'app/textum/dialog/text-file-upload.html' %}
-    {% include 'app/textum/dialog/images-upload.html' %}
+    {% include 'app/textum/editor/text-file-upload.dialog.tpl.html' %}
+    {% include 'app/textum/viewer/images-upload.dialog.tpl.html' %}
 
     <div class="row mainView">
         <div ui-view></div>

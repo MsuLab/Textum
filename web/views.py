@@ -31,14 +31,14 @@ class MultiView(TemplateView):
 
 
 class TextumView(TemplateView):
-    template_name = 'app/textum/textum.main.html'
+    template_name = 'app/textum/main.html'
 
 
 class TextumBaseView(TemplateView):
-    template_name = 'app/textum/textum.tpl.base.html'
+    template_name = 'app/textum/base.tpl.html'
 
 class TextumEditorView(TemplateView):
-    template_name = 'app/textum/textum.tpl.editor.html'
+    template_name = 'app/textum/editor/editor.tpl.html'
 
 class TextumViewerView(TemplateView):
-    template_name = 'app/textum/textum.tpl.viewer.html'
+    template_name = 'app/textum/viewer/viewer.tpl.html'
