@@ -21,8 +21,13 @@ class TextImageViewSet(viewsets.ModelViewSet):
     """
     queryset = TextImage.objects.all()
     serializer_class = TextImageSerializer
+    model = TextImage
 
     @detail_route(methods=['patch'])
-    def set_page_number(self, request, pk=None):
-        serializer = self.serializer_class(TextImage.objects.get(pk=pk))
+    def update_page_number(self, request, pk=None):
+        obj = self.model.objects.get(pk=pk)
+        obj.page_number = request.DATA["page_number"]
+        obj.save()
+
+        serializer = self.serializer_class(obj)
         return Response(serializer.data)

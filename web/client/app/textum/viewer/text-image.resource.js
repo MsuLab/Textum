@@ -8,10 +8,10 @@
     TextImageResource.$inject = ['$resource'];
 
     function TextImageResource ($resource){
-        var service = $resource('http://localdocker:8008/api/text-images/:pk', {}, {
-                $testMethod: {
+        var service = $resource('http://localdocker:8008/api/text-images/:id', {}, {
+                $updatePageNumber: {
                     method: 'PATCH',
-                    url: 'http://localdocker:8008/api/text-images/:pk/test_method'
+                    url: 'http://localdocker:8008/api/text-images/:id/update_page_number'
                 }
             }
         );

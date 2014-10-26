@@ -26,8 +26,9 @@ class TextDocument(TimeStampedModel):
 
 
 class TextImage(TimeStampedModel):
+    page_number = models.FloatField(blank=True, null=True)
     image = models.ImageField(upload_to=media_file_path)
-    page_number = models.IntegerField(blank=True, null=True)
+
     image_medium = ImageSpecField((ResizeToFit(150, 150),), format='JPEG', options={'quality': 90}, source='image')
     image_small = ImageSpecField((ResizeToFit(101, 101),), format='JPEG', options={'quality': 90}, source='image')
 

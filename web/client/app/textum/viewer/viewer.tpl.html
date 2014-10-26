@@ -61,7 +61,9 @@
         <!-- galleryMenu end -->
         <div class="photoGallery">
             <ul class="photoGrid">
-                <text-image ng-repeat="textImage in vm.textImages"></text-image>
+                <div ng-repeat="image in vm.textImages">
+                    <text-image image="image"></text-image>
+                </div>
             </ul>
         </div>
         <!-- photoGallery end -->

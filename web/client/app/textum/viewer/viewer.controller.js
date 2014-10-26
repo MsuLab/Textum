@@ -25,7 +25,10 @@
              });
              $scope.$on("viewer/onCompleteAll", function (event) {
                  ngDialog.close({ template: 'imagesUploaderDialog.tpl' });
-             })
+             });
+             $scope.$on("viewer/onDeleteItem", function (event, idx) {
+                 vm.textImages.splice(idx, 1);
+             });
         }
 
         function openImagesUploadDialog () {

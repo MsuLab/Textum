@@ -19,10 +19,12 @@
                 <th ng-show="vm.imagesUploader.isHTML5">Размер</th>
                 <th ng-show="vm.imagesUploader.isHTML5">Прогресс</th>
                 <th>Действия</th>
+                <th>Пагинация</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="item in vm.imagesUploader.queue">
+
                 <td><strong>{{ item.file.name }}</strong></td>
                 <td ng-show="vm.imagesUploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
                 <td ng-show="vm.imagesUploader.isHTML5">
@@ -44,6 +46,7 @@
                         <span class="glyphicon glyphicon-trash"></span> Удалить
                     </button>
                 </td>
+                <td><input type="text" ng-model="vm.pageNumbers[$index]" /></td>
             </tr>
             </tbody>
         </table>
