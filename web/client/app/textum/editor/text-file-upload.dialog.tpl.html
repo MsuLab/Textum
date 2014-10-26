@@ -16,10 +16,10 @@
         <table class="table">
             <thead>
             <tr>
-                <th width="50%">Name</th>
-                <th ng-show="vm.textFileUploader.isHTML5">Size</th>
-                <th ng-show="vm.textFileUploader.isHTML5">Progress</th>
-                <th>Actions</th>
+                <th width="50%">Название</th>
+                <th ng-show="vm.textFileUploader.isHTML5">Размер</th>
+                <th ng-show="vm.textFileUploader.isHTML5">Прогресс</th>
+                <th>Действия</th>
             </tr>
             </thead>
             <tbody>
@@ -35,14 +35,14 @@
                 <td nowrap>
                     <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()"
                             ng-disabled="item.isReady || item.isUploading || item.isSuccess">
-                        <span class="glyphicon glyphicon-upload"></span> Upload
+                        <span class="glyphicon glyphicon-upload"></span> Загрузить
                     </button>
                     <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()"
                             ng-disabled="!item.isUploading">
-                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                        <span class="glyphicon glyphicon-ban-circle"></span> Отменить
                     </button>
                     <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
-                        <span class="glyphicon glyphicon-trash"></span> Remove
+                        <span class="glyphicon glyphicon-trash"></span> Удалить
                     </button>
                 </td>
             </tr>

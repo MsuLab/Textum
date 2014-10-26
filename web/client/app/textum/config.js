@@ -36,5 +36,8 @@
 
 
             $locationProvider.html5Mode(true);
+
+            $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
         })
 })();
+

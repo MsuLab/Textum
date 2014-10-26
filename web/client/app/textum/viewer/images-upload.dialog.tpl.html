@@ -4,7 +4,7 @@
         <h3>Загрузка рукописей.</h3>
         <span class="btn btn-success fileinput-button">
             <i class="glyphicon glyphicon-plus"></i>
-            <span>Выберите файлы.</span>
+            <span>Добавить файлы.</span>
             <input nv-file-select
                    uploader="vm.imagesUploader"
                    type="file"
@@ -15,10 +15,10 @@
         <table ng-show="vm.imagesUploader.queue.length > 0" class="table">
             <thead>
             <tr>
-                <th width="50%">Name</th>
-                <th ng-show="vm.imagesUploader.isHTML5">Size</th>
-                <th ng-show="vm.imagesUploader.isHTML5">Progress</th>
-                <th>Actions</th>
+                <th width="50%">Название</th>
+                <th ng-show="vm.imagesUploader.isHTML5">Размер</th>
+                <th ng-show="vm.imagesUploader.isHTML5">Прогресс</th>
+                <th>Действия</th>
             </tr>
             </thead>
             <tbody>
@@ -32,16 +32,16 @@
                     </div>
                 </td>
                 <td nowrap>
-                    <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()"
-                            ng-disabled="item.isReady || item.isUploading || item.isSuccess">
-                        <span class="glyphicon glyphicon-upload"></span> Upload
-                    </button>
-                    <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()"
-                            ng-disabled="!item.isUploading">
-                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
-                    </button>
+                    <!--<button type="button" class="btn btn-success btn-xs" ng-click="item.upload()"-->
+                            <!--ng-disabled="item.isReady || item.isUploading || item.isSuccess">-->
+                        <!--<span class="glyphicon glyphicon-upload"></span> Upload-->
+                    <!--</button>-->
+                    <!--<button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()"-->
+                            <!--ng-disabled="!item.isUploading">-->
+                        <!--<span class="glyphicon glyphicon-ban-circle"></span> Cancel-->
+                    <!--</button>-->
                     <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
-                        <span class="glyphicon glyphicon-trash"></span> Remove
+                        <span class="glyphicon glyphicon-trash"></span> Удалить
                     </button>
                 </td>
             </tr>
@@ -50,23 +50,23 @@
 
         <div ng-show="vm.imagesUploader.queue.length > 0">
             <div>
-                Queue progress:
+                Общий прогресс:
                 <div class="progress" style="">
-                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': imagesUploader.progress + '%' }"
+                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': vm.imagesUploader.progress + '%' }"
                          style="width: 0%;"></div>
                 </div>
             </div>
-            <button type="button" class="btn btn-success btn-s" ng-click="imagesUploader.uploadAll()"
-                    ng-disabled="!imagesUploader.getNotUploadedItems().length" disabled="disabled">
-                <span class="glyphicon glyphicon-upload"></span> Upload all
+            <button type="button" class="btn btn-success btn-s" ng-click="vm.imagesUploader.uploadAll()"
+                    ng-disabled="!vm.imagesUploader.getNotUploadedItems().length" >
+                <span class="glyphicon glyphicon-upload"></span> Загурзить всё
             </button>
-            <button type="button" class="btn btn-warning btn-s" ng-click="imagesUploader.cancelAll()"
-                    ng-disabled="!imagesUploader.isUploading" disabled="disabled">
-                <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+            <button type="button" class="btn btn-warning btn-s" ng-click="vm.imagesUploader.cancelAll()"
+                    ng-disabled="!vm.imagesUploader.isUploading" disabled="disabled">
+                <span class="glyphicon glyphicon-ban-circle"></span> Отменить всё
             </button>
-            <button type="button" class="btn btn-danger btn-s" ng-click="imagesUploader.clearQueue()"
-                    ng-disabled="!imagesUploader.queue.length" disabled="disabled">
-                <span class="glyphicon glyphicon-trash"></span> Remove all
+            <button type="button" class="btn btn-danger btn-s" ng-click="vm.imagesUploader.clearQueue()"
+                    ng-disabled="!vm.imagesUploader.queue.length" disabled="disabled">
+                <span class="glyphicon glyphicon-trash"></span> Удалить все
             </button>
         </div>
     </div>

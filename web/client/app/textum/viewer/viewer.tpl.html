@@ -1,3 +1,5 @@
+{% include 'app/textum/viewer/text-image.view.tpl.html' %}
+{% verbatim %}
 <div ng-controller="ViewerController as vm" class="col-lg-6 rightView">
     <div class="jumbotron">
 
@@ -59,6 +61,7 @@
         <!-- galleryMenu end -->
         <div class="photoGallery">
             <ul class="photoGrid">
+                <text-image ng-repeat="textImage in vm.textImages"></text-image>
             </ul>
         </div>
         <!-- photoGallery end -->
@@ -81,3 +84,4 @@
         </form>
     </div>
 </div>
+{% endverbatim %}

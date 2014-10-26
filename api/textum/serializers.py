@@ -16,13 +16,13 @@ class TextDocumentSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class TextImageSerializer(serializers.HyperlinkedModelSerializer):
-    image_url = serializers.SerializerMethodField('get_image_url')
-    image_medium_url = serializers.Field('image_medium.url')
-    image_small_url = serializers.Field('image_small.url')
+    url = serializers.SerializerMethodField('get_image_url')
+    medium_url = serializers.Field('image_medium.url')
+    small_url = serializers.Field('image_small.url')
 
     class Meta:
         model = TextImage
-        fields = ('id', 'image', 'image_url', 'page_number', 'image_medium_url', 'image_small_url',)
+        fields = ('id', 'image', 'url', 'page_number', 'medium_url', 'small_url',)
 
     def get_image_url(self, obj):
         return obj.image.url
