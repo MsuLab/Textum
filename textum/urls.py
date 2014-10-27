@@ -5,7 +5,7 @@ from django.contrib import admin
 
 from api.urls import api_urls
 
-from web.views import FrontView, TextumView
+from web.views import TextumView
 from web import urls as web_urls
 
 
@@ -13,17 +13,11 @@ urlpatterns = patterns(
     '',
     # API Routes
     url(r'^api/', include(api_urls)),
-
-    # Single Page Application Landing Page
-    url(r'^$', FrontView.as_view()),
-    url(r'^site/', FrontView.as_view(), name='client'),
-    url(r'^textum/', TextumView.as_view(), name='textum'),
-
-    # Web Templates
     url(r'^web/', include(web_urls, namespace='web')),
 
-    # Uploads
-    # url(r'^upload/', include(upload, namespace='upload')),
+    # Single Page Application Landing Page
+    url(r'^$', TextumView.as_view()),
+    url(r'^textum/', TextumView.as_view(), name='textum'),
 )
 
 if settings.DEBUG:

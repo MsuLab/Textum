@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 {% load static compress %}
 {% block ng_app %}
-<html ng-app="TextumApp">
-<base href="/site/">
 {% endblock %}
 <head>
     <meta charset='utf-8'>
@@ -50,15 +48,7 @@
 
     <!-- project's scripts -->
     {% block head_js %}
-        {# {% compress js %} #}
-            <script>
-                {% include 'app/app.module.js' %}
-                {% include 'app/app.config.js' %}
 
-                {% include 'app/sample/sample.controller.js' %}
-                {% include 'app/sample/sample.resource.js' %}
-            </script>
-        {# {% endcompress %} #}
     {% endblock %}
 
 </head>
@@ -67,12 +57,6 @@
 {% endblock %}
 <div class="wrapper">
     {% block container %}
-        <h1>Front page. It works! <a ui-sref="sample">Check Sample</a></h1>
-        <div ui-view></div>
-        <!-- We'll also add some navigation: -->
-        <a ui-sref="state1">State 1</a>
-        <a ui-sref="state2">State 2</a>
-        <a ui-sref="multi.root">multi</a>
     {% endblock %}
 </div>
 </body>
