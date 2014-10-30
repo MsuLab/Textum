@@ -5,15 +5,23 @@
         .module('TextumApp')
         .controller("ViewerController", ViewerController);
 
-    ViewerController.$inject = ['ngDialog', '$log', 'TextImageResource', '$scope'];
+    ViewerController.$inject = ['ngDialog', '$log', 'TextImageResource', '$scope', '$rootScope'];
 
-    function ViewerController (ngDialog, $log, TextImageResource, $scope) {
+    function ViewerController (ngDialog, $log, TextImageResource, $scope, $rootScope) {
         var vm = this;
 
+        vm.people = [{a:1},2,3,4,5];
+
         vm.sample = {};
-        vm.openImagesUploadDialog = openImagesUploadDialog;
         vm.textImages = TextImageResource.query();
+        vm.selectedImage = null;
+        vm.isShowFullImage = false;
+
+        vm.openImagesUploadDialog = openImagesUploadDialog;
         vm.deleteAll = deleteAll;
+        vm.select = select;
+        vm.openFullView = openFullView;
+        vm.closeFullView = closeFullView;
 
         activate();
         ////////////////////////////////////////
@@ -33,6 +41,7 @@
         }
 
         function openImagesUploadDialog () {
+            console.log("here")
             ngDialog.open({ template: 'imagesUploaderDialog.tpl' });
         }
 
@@ -40,6 +49,30 @@
             TextImageResource.deleteAll(function (textImages) {
                 while(vm.textImages.length > 0) {vm.textImages.pop();}
             })
+        }
+
+        function select(index) {
+            if (vm.selectedImage) {
+                vm.selectedImage.isSelected = false;
+
+                if (vm.selectedImage == vm.textImages[index])
+                    return;
+            }
+
+            vm.selectedImage = vm.textImages[index];
+            vm.selectedImage.isSelected = true;
+        }
+
+        function openFullView(index) {
+            select(index);
+            $rootScope.$broadcast("viewer/openFullView", vm.selectedImage);
+            vm.isShowFullImage = true;
+        }
+
+        function closeFullView() {
+            vm.isShowFullImage = false;
+            vm.selectedImage.isSelected = false;
+            $rootScope.$broadcast("viewer/closeFullView");
         }
 
     }

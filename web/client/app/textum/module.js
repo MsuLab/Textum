@@ -13,7 +13,6 @@
 
             'angularFileUpload',
             'ngDialog',
-//            'blueimp.fileupload',
             'angular-loading-bar'
         ]);
 })();

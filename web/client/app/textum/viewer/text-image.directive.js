@@ -10,6 +10,7 @@
     function textImage () {
         var directive = {
             restrict: 'E',
+            replace: true,
             templateUrl: "text-image.view.tpl",
             scope: {
                 image: '='
@@ -24,7 +25,6 @@
         Controller.$inject = ['$scope', 'TextImageResource', 'paginationService', '$rootScope'];
         function Controller($scope, TextImageResource, paginationService, $rootScope) {
             var vm = this;
-
             vm.textImage = $scope.image;
             vm.inputPageNumber = "";
             vm.updatePageNumber = updatePageNumber;
@@ -38,7 +38,7 @@
                 TextImageResource.$updatePageNumber({id: vm.textImage.id},
                     {page_number: pageNumber },
                     function (textImage) {
-                        vm.textImage = textImage;
+                        vm.textImage.page_number = textImage.page_number;
                         vm.inputPageNumber = "";
                 })
             }
@@ -51,6 +51,7 @@
         }
 
         function link(scope, element, attrs) {
+            scope.image = null;
             /* */
         }
     }
