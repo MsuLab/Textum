@@ -11,7 +11,7 @@
         var vm = this;
 
         vm.imagesUploader = new FileUploader({
-            url: 'http://localdocker:8008/api/text-images/.json',
+            url: '/api/text-images/.json',
             alias: "image"
         });
         vm.pageNumbers = [];

@@ -11,7 +11,7 @@
         var vm = this;
 
         vm.textFileUploader = new FileUploader({
-            url: 'http://localdocker:8008/api/text-documents/.json',
+            url: '/api/text-documents/.json',
             alias: "document"
         });
 
