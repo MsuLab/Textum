@@ -10,8 +10,6 @@
     function ViewerController (ngDialog, $log, TextImageResource, $scope, $rootScope) {
         var vm = this;
 
-        vm.people = [{a:1},2,3,4,5];
-
         vm.sample = {};
         vm.textImages = TextImageResource.query();
         vm.selectedImage = null;

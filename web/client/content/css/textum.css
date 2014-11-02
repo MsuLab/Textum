@@ -65,7 +65,7 @@
 /* Photo Gallery */
 
 .jumbotron {
-    height: 700px;
+    height: 100%;
     padding: 10px 15px 15px 15px;
 
     -webkit-border-radius: 8px;

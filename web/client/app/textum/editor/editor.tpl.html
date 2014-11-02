@@ -11,15 +11,9 @@
             </div>
         </div>
         <hr>
-        {% if is_odf %}
-        <div style="height: 634px; overflow: auto;" id="webodf-wrapper">
-            <div id="webodf-textarea">
-                <p>Нет текстового файла. Нажмите кнопку <b>"Загрузить файл"</b>.</p>
-            </div>
-        </div>
-        {% else %}
-        <textarea id="wysihtml5-textarea" placeholder="Введите текст ..."></textarea>
-        {% endif %}
 
+        <div ng-controller="WodoEditorController as wodo" id="editorContainer" style="width:100%; height:680px; margin:0px; padding:0px">
+
+        </div>
     </div>
 </div>

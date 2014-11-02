@@ -32,6 +32,10 @@
         <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
         <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
 
+        <script src="{% static 'app/textum/editor/wodo/wodotexteditor/wodotexteditor.js' %}"></script>
+        <script src="{% static 'app/textum/editor/wodo/FileSaver.js' %}"></script>
+        <script src="{% static 'app/textum/editor/wodo/localfileeditor.js' %}"></script>
+
         <script src="{% static 'angular/angular.min.js' %}"></script>
         <script src="{% static 'angular-animate/angular-animate.min.js' %}"></script>
         <script src="{% static 'angular-cookies/angular-cookies.min.js' %}"></script>
@@ -53,8 +57,8 @@
 
 </head>
 <body>
-{% block navbar_block %}
-{% endblock %}
+{# {% block navbar_block %} #}
+{# {% endblock %} #}
 <div class="wrapper">
     {% block container %}
     {% endblock %}
