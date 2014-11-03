@@ -63,11 +63,12 @@
         <div class="photoGallery">
             <ul class="photoGrid">
                 <div ng-hide="vm.isShowFullImage"
-                     ng-repeat="image in vm.textImages"
-                     ng-click="vm.select($index)"
-                     ng-dblclick="vm.openFullView($index)">
+                     ng-repeat="image in vm.textImages | index | orderBy:'page_number':false"
+                     ng-click="vm.select(image.index)"
+                     ng-dblclick="vm.openFullView(image.index)">
                     <text-image image="image"></text-image>
                 </div>
+
                 <text-image-full ng-show="vm.isShowFullImage"></text-image-full>
             </ul>
         </div>

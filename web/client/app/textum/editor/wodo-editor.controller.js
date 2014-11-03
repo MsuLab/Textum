@@ -84,8 +84,6 @@
                     "top": elementJQ.offset().top - wodo.wrapperJQ.offset().top - wodo.menuHeight
                 });
             });
-
-            console.log(wodo.pages);
         }
 
         function startEditing() {
@@ -199,7 +197,7 @@
                 color: "black"
             });
 
-            wodo.loadedFilename = wodo.docUrl;
+            wodo.loadedFilename = wodo.docUrl.replace(/^.*[\\\/]/, '');
 
             wodo.editor.openDocumentFromUrl(wodo.docUrl, startEditing);
         }

@@ -21,6 +21,10 @@ class TextImageViewSet(viewsets.ModelViewSet):
     serializer_class = TextImageSerializer
     model = TextImage
 
+    def filter_queryset(self, queryset):
+        queryset = super(TextImageViewSet, self).filter_queryset(queryset)
+        return queryset.order_by('page_number')
+
     @detail_route(methods=['patch'])
     def update_page_number(self, request, pk=None):
         obj = self.model.objects.get(pk=pk)

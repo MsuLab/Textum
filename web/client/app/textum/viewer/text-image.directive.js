@@ -45,13 +45,12 @@
 
             function deleteTextImage() {
                 TextImageResource.delete({id: vm.textImage.id}, function () {
-                    $rootScope.$broadcast("viewer/onDeleteItem", $scope.$parent.$index);
+                    $rootScope.$broadcast("viewer/onDeleteItem", vm.textImage.index);
                 });
             }
         }
 
         function link(scope, element, attrs) {
-            scope.image = null;
             /* */
         }
     }
