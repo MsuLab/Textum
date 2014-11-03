@@ -5,9 +5,9 @@
         .module('TextumApp')
         .controller("WodoEditorController", WodoEditorController);
 
-    WodoEditorController.$inject = ['$rootScope'];
+    WodoEditorController.$inject = ['$scope', '$rootScope'];
 
-    function WodoEditorController ($rootScope) {
+    function WodoEditorController ($scope, $rootScope) {
         var wodo = this;
 
         wodo.docUrl = '/static/app/textum/editor/wodo/welcome.odt';
@@ -20,6 +20,8 @@
             allFeaturesEnabled: true
         };
 
+        wodo.pages = [];
+
         activate();
         ////////////////////////////////////////
 
@@ -27,35 +29,33 @@
             Wodo.createTextEditor('editorContainer', wodo.editorOptions, onEditorCreated);
 
             angular.element.fn.goTo = function () {
-                $('#webodfeditor-canvascontainer1').animate({
+                angular.element('#webodfeditor-canvascontainer1').animate({
                     scrollTop: $(this).offset().top + 'px'
                 }, 'fast');
                 return this; // for chaining...
             };
+
+            $scope.$on("editor/scrollToPage", function (event, pageNum) {
+                angular.forEach(wodo.pages, function (page, i) {
+                    if(page.num == pageNum)
+                        page.el.goTo();
+                })
+            })
         }
 
         function parseAnnotations() {
+            var marksJQ = angular.element(".annotationConnector.horizontal");
 
+            marksJQ.each(function (i, element) {
+                wodo.pages.push({
+                    "el": $(element),
+                    "num": parseInt($(element).parent().find("p").text())
+                });
+            });
         }
 
-        function startEditing(a, b) {
-            console.log('startEditing');
-
-            console.log(angular.element(".annotationConnector.horizontal").size())
-
-//
-//            $(".annotationConnector.horizontal").each(function (i, a) {
-//                console.log(i, $(a).parent().find("p").text());
-//                console.log({
-//                    "el": $(a),
-//                    "num": parseInt($(a).parent().find("p").text())
-//                })
-//                $(a).goTo();
-//            })
-//            // console.log($(".annotationConnector.horizontal").size())
-//            // $(".annotationConnector.horizontal").eq(1).goTo()
-//            // $(".annotationConnector.horizontal").parent().find("p").text()
-
+        function startEditing() {
+            parseAnnotations()
         }
 
         function fileSelectHandler(evt) {

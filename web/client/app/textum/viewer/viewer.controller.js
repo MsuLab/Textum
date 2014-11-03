@@ -64,6 +64,8 @@
         function openFullView(index) {
             select(index);
             $rootScope.$broadcast("viewer/openFullView", vm.selectedImage);
+            $rootScope.$broadcast("editor/scrollToPage", vm.selectedImage.page_number);
+
             vm.isShowFullImage = true;
         }
 
