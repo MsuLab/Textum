@@ -5,14 +5,15 @@
         .module('TextumApp')
         .controller("EditorController", EditorController);
 
-    EditorController.$inject = ['ngDialog', '$log', '$scope'];
+    EditorController.$inject = ['ngDialog', '$log', '$scope', '$rootScope'];
 
-    function EditorController (ngDialog, $log, $scope) {
+    function EditorController (ngDialog, $log, $scope, $rootScope) {
         var vm = this;
 
-        vm.sample = {};
-        vm.openTextFileUploadDialog = openTextFileUploadDialog;
         vm.document = null;
+
+        vm.openTextFileUploadDialog = openTextFileUploadDialog;
+        vm.parsePages = parsePages;
 
         activate();
         ////////////////////////////////////////
@@ -30,5 +31,8 @@
             ngDialog.open({ template: 'textFileUploaderDialog.tpl' });
         }
 
+        function parsePages() {
+            $rootScope.$broadcast("wodo/parseAnnotations");
+        }
     }
 })();

@@ -5,13 +5,14 @@
         .module('TextumApp')
         .controller("WodoEditorController", WodoEditorController);
 
-    WodoEditorController.$inject = ['$scope', '$rootScope'];
+    WodoEditorController.$inject = ['$scope', '$rootScope', 'paginationService'];
 
-    function WodoEditorController ($scope, $rootScope) {
+    function WodoEditorController ($scope, $rootScope, paginationService) {
         var wodo = this;
 
-        wodo.docUrl = '/static/app/textum/editor/wodo/welcome.odt';
+        wodo.menuHeight = 21;
 
+        wodo.docUrl = '/static/app/textum/editor/wodo/welcome.odt';
         wodo.editor = null;
         wodo.loadedFilename = null;
         wodo.editorOptions = {
@@ -20,6 +21,10 @@
             allFeaturesEnabled: true
         };
 
+        var KmarksQueryStr = ".annotationConnector.horizontal",
+            KwrapperQueryStr = "#webodfeditor-canvascontainer1";
+        wodo.wrapperJQ = null;
+
         wodo.pages = [];
 
         activate();
@@ -27,35 +32,65 @@
 
         function activate () {
             Wodo.createTextEditor('editorContainer', wodo.editorOptions, onEditorCreated);
+        }
 
+        function initScopeAndListeners () {
+            // Scope
+            wodo.wrapperJQ = angular.element(KwrapperQueryStr);
+
+            // Listeners
+            $scope.$on("wodo/scrollToPage", function (event, pageNum) {
+                angular.forEach(wodo.pages, function (page, i) {
+                    if(page.num == pageNum)
+                        wodo.wrapperJQ.scrollTop(page.top);
+                })
+            });
+            $scope.$on("wodo/parseAnnotations", parseAnnotations);
+
+            // Extra
             angular.element.fn.goTo = function () {
-                angular.element('#webodfeditor-canvascontainer1').animate({
+                wodo.wrapperJQ.animate({
                     scrollTop: $(this).offset().top + 'px'
                 }, 'fast');
                 return this; // for chaining...
             };
 
-            $scope.$on("editor/scrollToPage", function (event, pageNum) {
-                angular.forEach(wodo.pages, function (page, i) {
-                    if(page.num == pageNum)
-                        page.el.goTo();
-                })
-            })
+            angular.element.fn.getElementText = function() {
+                return $(this).clone()
+                        .children()
+                        .remove()
+                        .end()
+                        .text();
+
+            };
         }
 
+        // ToDo: create wodo page service.
+        // ToDo: this should be called on annotation create event...
         function parseAnnotations() {
-            var marksJQ = angular.element(".annotationConnector.horizontal");
+            // drop pages
+            wodo.pages = [];
 
-            marksJQ.each(function (i, element) {
+            // drop wrapper scroll for correct page offset evaluation
+            wodo.wrapperJQ.scrollTop(0);
+
+            // iterate through all wodo annotations and parse them.
+            angular.element(KmarksQueryStr).each(function (i, element) {
+                var elementJQ = $(element);
+
                 wodo.pages.push({
-                    "el": $(element),
-                    "num": parseInt($(element).parent().find("p").text())
+                    "el": elementJQ,
+                    "num": paginationService.decode(elementJQ.parent().find("p").getElementText()),
+                    "top": elementJQ.offset().top - wodo.wrapperJQ.offset().top - wodo.menuHeight
                 });
             });
+
+            console.log(wodo.pages);
         }
 
         function startEditing() {
-            parseAnnotations()
+            initScopeAndListeners();
+            parseAnnotations();
         }
 
         function fileSelectHandler(evt) {
@@ -155,6 +190,7 @@
                 alert(err);
                 return;
             }
+
             $rootScope.$broadcast("editor/onEditorCreated");
 
             wodo.editor = editor;
@@ -162,10 +198,8 @@
                 fullName: "Textum",
                 color: "black"
             });
-            console.log(editor )
 
             wodo.loadedFilename = wodo.docUrl;
-
 
             wodo.editor.openDocumentFromUrl(wodo.docUrl, startEditing);
         }
