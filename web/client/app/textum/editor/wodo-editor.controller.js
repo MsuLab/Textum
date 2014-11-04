@@ -8,24 +8,25 @@
     WodoEditorController.$inject = ['$scope', '$rootScope', 'paginationService'];
 
     function WodoEditorController ($scope, $rootScope, paginationService) {
-        var wodo = this;
+        var wodo = this,
+            KmarksQueryStr = ".annotationConnector.horizontal",
+            KwrapperQueryStr = "#webodfeditor-canvascontainer1";
+
+        wodo.pages = [];
+        wodo.editor = null;
+        wodo.wrapperJQ = null;
 
         wodo.menuHeight = 21;
 
         wodo.docUrl = '/static/app/textum/editor/wodo/welcome.odt';
-        wodo.editor = null;
         wodo.loadedFilename = null;
+
+        // ToDo: Disable unused operations.
         wodo.editorOptions = {
             loadCallback: load,
             saveCallback: save,
             allFeaturesEnabled: true
         };
-
-        var KmarksQueryStr = ".annotationConnector.horizontal",
-            KwrapperQueryStr = "#webodfeditor-canvascontainer1";
-        wodo.wrapperJQ = null;
-
-        wodo.pages = [];
 
         activate();
         ////////////////////////////////////////
@@ -35,10 +36,11 @@
         }
 
         function initScopeAndListeners () {
-            // Scope
+            /* Scope */
             wodo.wrapperJQ = angular.element(KwrapperQueryStr);
 
-            // Listeners
+
+            /* Listeners */
             $scope.$on("wodo/scrollToPage", function (event, pageNum) {
                 angular.forEach(wodo.pages, function (page, i) {
                     if(page.num == pageNum)
@@ -47,7 +49,10 @@
             });
             $scope.$on("wodo/parseAnnotations", parseAnnotations);
 
-            // Extra
+
+            /* Extra */
+
+            // jq extension for scrolling up to element.
             angular.element.fn.goTo = function () {
                 wodo.wrapperJQ.animate({
                     scrollTop: $(this).offset().top + 'px'
@@ -55,14 +60,19 @@
                 return this; // for chaining...
             };
 
+            // jq extension for getting text only from adjusted element, not from child.
             angular.element.fn.getElementText = function() {
                 return $(this).clone()
                         .children()
                         .remove()
                         .end()
                         .text();
-
             };
+        }
+
+        function startEditing() {
+            initScopeAndListeners();
+            parseAnnotations();
         }
 
         // ToDo: create wodo page service.
@@ -84,11 +94,6 @@
                     "top": elementJQ.offset().top - wodo.wrapperJQ.offset().top - wodo.menuHeight
                 });
             });
-        }
-
-        function startEditing() {
-            initScopeAndListeners();
-            parseAnnotations();
         }
 
         function fileSelectHandler(evt) {
