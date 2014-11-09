@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 {% load static compress %}
-<html ng-app="TextumApp">
+{% block ng_app %}
+{% endblock %}
 <head>
-    <base href="/site/">
-
     <meta charset='utf-8'>
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +10,15 @@
     <!-- vendor's styles -->
     <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
     <link href="{% static 'angular-loading-bar/build/loading-bar.min.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'ngDialog/css/ngDialog.min.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'ngDialog/css/ngDialog-theme-default.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'ngDialog/css/ngDialog-theme-plain.min.css' %}" rel="stylesheet" media="screen">
+
+    <link href="{% static 'blueimp-file-upload/css/jquery.fileupload.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'blueimp-file-upload/css/jquery.fileupload-ui.css' %}" rel="stylesheet" media="screen">
 
     <!-- project's styles -->
-    <link href="{% static 'content/css/styles.css' %}" rel="stylesheet" media="screen">
+    <!--<link href="{% static 'content/css/styles.css' %}" rel="stylesheet" media="screen">-->
 
     {% block head_css %}{% endblock %}
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -27,6 +32,10 @@
         <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
         <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
 
+        <script src="{% static 'app/textum/editor/wodo/wodotexteditor/wodotexteditor.js' %}"></script>
+        <script src="{% static 'app/textum/editor/wodo/FileSaver.js' %}"></script>
+        <script src="{% static 'app/textum/editor/wodo/localfileeditor.js' %}"></script>
+
         <script src="{% static 'angular/angular.min.js' %}"></script>
         <script src="{% static 'angular-animate/angular-animate.min.js' %}"></script>
         <script src="{% static 'angular-cookies/angular-cookies.min.js' %}"></script>
@@ -36,33 +45,22 @@
 
         <script src="{% static 'angular-ui-router/release/angular-ui-router.min.js' %}"></script>
         <script src="{% static 'angular-file-upload/angular-file-upload.min.js' %}"></script>
+        <!--<script src="{% static 'blueimp-file-upload/js/jquery.fileupload-angular.js' %}"></script>-->
         <script src="{% static 'angular-loading-bar/build/loading-bar.min.js' %}"></script>
         <script src="{% static 'ngDialog/js/ngDialog.min.js' %}"></script>
     {# {% endcompress %} #}
 
     <!-- project's scripts -->
     {% block head_js %}
-        {# {% compress js %} #}
-            <script>
-                {% include 'app/app.module.js' %}
-                {% include 'app/app.config.js' %}
 
-                {% include 'app/sample/sample.controller.js' %}
-                {% include 'app/sample/sample.resource.js' %}
-            </script>
-        {# {% endcompress %} #}
     {% endblock %}
 
 </head>
 <body>
+{# {% block navbar_block %} #}
+{# {% endblock %} #}
 <div class="wrapper">
     {% block container %}
-        <h1>Front page. It works! <a ui-sref="sample">Check Sample</a></h1>
-        <div ui-view></div>
-        <!-- We'll also add some navigation: -->
-        <a ui-sref="state1">State 1</a>
-        <a ui-sref="state2">State 2</a>
-        <a ui-sref="multi.root">multi</a>
     {% endblock %}
 </div>
 </body>

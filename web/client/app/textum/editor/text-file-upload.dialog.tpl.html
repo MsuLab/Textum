@@ -1,0 +1,54 @@
+{% verbatim %}
+<script type="text/ng-template" id="textFileUploaderDialog.tpl">
+
+    <div ng-controller="TextFileUploaderController as vm">
+        <h3>Загрузка текстового файла.</h3>
+        <span class="btn btn-success fileinput-button">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span>Выберите файл.</span>
+            <input nv-file-select
+                   uploader="vm.textFileUploader"
+                   type="file"
+                   name="files[]">
+
+
+        </span>
+        <table class="table">
+            <thead>
+            <tr>
+                <th width="50%">Название</th>
+                <th ng-show="vm.textFileUploader.isHTML5">Размер</th>
+                <th ng-show="vm.textFileUploader.isHTML5">Прогресс</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in vm.textFileUploader.queue">
+                <td><strong>{{ item.file.name }}</strong></td>
+                <td ng-show="vm.textFileUploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                <td ng-show="vm.textFileUploader.isHTML5">
+                    <div class="progress" style="margin-bottom: 0;">
+                        <div class="progress-bar" role="progressbar"
+                             ng-style="{ 'width': item.progress + '%' }"></div>
+                    </div>
+                </td>
+                <td nowrap>
+                    <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()"
+                            ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                        <span class="glyphicon glyphicon-upload"></span> Загрузить
+                    </button>
+                    <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()"
+                            ng-disabled="!item.isUploading">
+                        <span class="glyphicon glyphicon-ban-circle"></span> Отменить
+                    </button>
+                    <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                        <span class="glyphicon glyphicon-trash"></span> Удалить
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</script>
+{% endverbatim %}

@@ -5,26 +5,15 @@ from django.views.generic import View
 from django.views.generic.base import TemplateView
 
 
-class FrontView(TemplateView):
-    template_name = 'base.html'
+class TextumView(TemplateView):
+    template_name = 'app/textum/main.html'
 
 
-# Templates:
-class SampleView(TemplateView):
-    template_name = 'app/sample/sample.tpl.html'
+class TextumBaseView(TemplateView):
+    template_name = 'app/textum/base.tpl.html'
 
+class TextumEditorView(TemplateView):
+    template_name = 'app/textum/editor/editor.tpl.html'
 
-class State1View(TemplateView):
-    template_name = 'app/sample/sample.tpl.state1.html'
-
-class State1ListView(TemplateView):
-    template_name = 'app/sample/sample.tpl.state1.list.html'
-
-class State2View(TemplateView):
-    template_name = 'app/sample/sample.tpl.state2.html'
-
-class State2ListView(TemplateView):
-    template_name = 'app/sample/sample.tpl.state2.list.html'
-
-class MultiView(TemplateView):
-    template_name = 'app/sample/sample.tpl.multi.html'
+class TextumViewerView(TemplateView):
+    template_name = 'app/textum/viewer/viewer.tpl.html'

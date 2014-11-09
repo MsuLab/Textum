@@ -1,0 +1,223 @@
+/* Common */
+/* Styles specific to this particular page */
+
+#editorContainer {
+    width:100%;
+    height:680px;
+    margin:0px;
+    padding:0px
+}
+
+.ngdialog-content {
+    max-width: 100%;
+    width: 650px !important;
+}
+
+.mainView {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.leftView {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.rightView {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.rightView, .leftView {
+    border: 2px solid;
+    border-radius: 8px;
+}
+
+/* Text View */
+#headerForTexteditor {
+    margin-left: 10px;
+}
+
+#uploadButton {
+    float: right;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+#popupButtons {
+    margin: 15px 7px 0;
+}
+
+#uploadFile-quit, #uploadImg-quit, #imgPage-quit {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
+
+#imgPage-ok {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+}
+
+#some-textarea {
+    width: 100%;
+    height: 580px;
+}
+
+/* Photo Gallery */
+
+.jumbotron {
+    height: 100%;
+    padding: 10px 15px 15px 15px;
+
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    margin-bottom: 0px;
+    font-size: 16px;
+}
+
+.jumbotron h3, hr {
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+.jumbotron hr {
+    border-top: 1px solid #000
+}
+
+.photoGallery {
+    width: 100%;
+    height: 592px;
+    border: 1px solid rgb(0, 0, 0);
+    overflow: auto;
+    clear: both;
+}
+
+/* Full */
+
+/* Grid */
+.photoGrid {
+    width: 93%;
+    position: relative;
+
+    margin: 10px 0px 0px 10px;
+    padding: 0px;
+
+    /* Fixes height problem */
+    float: left;
+    clear: left;
+}
+
+.photoGrid li {
+    display: inline;
+    /*width: 195px;
+    height: 140px;*/
+    float: left;
+    border: 1px solid #000;
+    margin: 5px;
+    list-style: none;
+    position: relative;
+    text-align: center;
+
+}
+
+.photoGrid .image {
+    /*display: inline;*/
+    width: 195px;
+    height: 140px;
+    /*float: left;
+    border: 1px solid #000;
+    margin: 5px;
+    list-style: none;
+    position: relative;
+    text-align: center;*/
+
+}
+
+.photoGrid li > .page-num {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    text-align: center;
+    line-height: 17px;
+    font-size: 17px;
+}
+
+.photoGrid li > img {
+    max-width: 500px;
+    max-height: 100%;
+
+    /* height:138px;
+     width:auto;
+     max-width:195px;*/
+}
+
+.photoGrid li > form {
+    position: absolute;
+    left: 5px;
+    bottom: 1px;
+}
+
+.photoGrid li > form > input {
+    width: 50px;
+}
+
+.photoGrid .image > .btn {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+}
+
+.photoGrid .fullImage > .btn {
+    display: none;
+}
+
+.photoGrid .image:hover {
+    border: 3px solid #000;
+}
+
+.photoGrid .image-selected {
+    border: 3px solid blue;
+}
+
+.photoGrid .image-selected:hover {
+    border: 3px solid blue;
+}
+
+.photoGrid .fullImage {
+    margin-bottom: 20px;
+}
+
+.galleryMenu {
+    top: 85px;
+    right: 30px;
+    position: absolute;
+    z-index: 10;
+}
+
+.galleryMenu ul {
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.galleryMenu li {
+    list-style: none;
+}
+
+.pages {
+    left: 50%;
+    top: 50%;
+    text-align: center;
+}
+
+.pagination {
+    margin-top: 10px;
+}

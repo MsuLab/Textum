@@ -1,0 +1,19 @@
+{% verbatim %}
+<script type="text/ng-template" id="text-image.view.tpl">
+    <li class="image {{vm.textImage.isSelected && 'image-selected' || '' }}">
+        <span class="page-num">{{vm.idx }} {{ vm.textImage.page_number | pagination}}</span>
+        <img src="{{ vm.textImage.medium_url }}" alt="{{ vm.textImage.page_number }}">
+
+        <form ng-submit="vm.updatePageNumber()">
+            <input type="text"
+                   ng-model="vm.inputPageNumber">
+        </form>
+        <span class="btn btn-sm btn-danger" title="Удалить изображение"
+                ng-click="vm.deleteTextImage()">
+            <span class="glyphicon glyphicon-trash glyphicon-white"></span>
+        </span>
+    </li>
+</script>
+{% endverbatim %}
+
+

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static compress %}
+
+
+{% block ng_app %}
+<html ng-app="TextumApp">
+<base href="/textum/">
+{% endblock %}
+
+
+{% block head_css %}
+    <link href="{% static 'content/css/textum.css' %}" rel="stylesheet" media="screen">
+    <style>
+        body {
+            padding-top: 54px;
+            padding-bottom: 0px;
+            /*overflow: hidden;*/ /* Disable elastic effect */
+        }
+    </style>
+{% endblock %}
+
+{% block head_js %}
+    <script>
+        {% include 'app/textum/module.js' %}
+        {% include 'app/textum/config.js' %}
+
+        {% include 'app/textum/common/pagination.service.js' %}
+        {% include 'app/textum/common/pagination.filter.js' %}
+        {% include 'app/textum/common/index.filter.js' %}
+
+        {% include 'app/textum/editor/editor.controller.js' %}
+        {% include 'app/textum/editor/wodo-editor.controller.js' %}
+        {% include 'app/textum/editor/text-file-uploader.controller.js' %}
+
+        {% include 'app/textum/viewer/viewer.controller.js' %}
+        {% include 'app/textum/viewer/images-uploader.controller.js' %}
+        {% include 'app/textum/viewer/text-image.resource.js' %}
+        {% include 'app/textum/viewer/text-image.directive.js' %}
+        {% include 'app/textum/viewer/text-image-full.directive.js' %}
+
+    </script>
+{% endblock %}
+
+{% block navbar_block %}
+
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href=""><b>Текстолог</b></a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+
+                <li><a href="">Главная</a></li>
+                <li class="active"><a href="">Textum</a></li>
+                <li><a href="">Документация</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Выпадающий <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Действие</a></li>
+                        <li><a href="#">Другое действие</a></li>
+                        <li><a href="#">Что-то другое</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Мини заголовок</li>
+                        <li><a href="#">Ссылка</a></li>
+                        <li><a href="#">Еще одна</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Right Part -->
+            <div class="pull-right">
+                <a href="" class="btn btn-default navbar-btn">Войти</a>
+                <a href="" class="btn btn-info navbar-btn">Зарегистрироваться</a>
+            </div>
+        </nav><!--/.navbar-collapse -->
+    </div>
+</header>
+{% endblock %}
+
+{% block container %}
+    {% include 'app/textum/editor/text-file-upload.dialog.tpl.html' %}
+    {% include 'app/textum/viewer/images-upload.dialog.tpl.html' %}
+
+    <div class="row mainView">
+        <div ui-view></div>
+    </div>
+{% endblock %}

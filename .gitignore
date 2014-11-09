@@ -1,5 +1,10 @@
 .DS_Store
 
+settings/local_dev.py
+
+media
+static
+
 *.py[cod]
 
 # C extensions
@@ -36,6 +41,7 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+.idea
 
 # DB
 *.sqlite3
