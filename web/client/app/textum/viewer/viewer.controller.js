@@ -5,21 +5,23 @@
         .module('TextumApp')
         .controller("ViewerController", ViewerController);
 
-    ViewerController.$inject = ['ngDialog', '$log', 'TextImageResource', '$scope', '$rootScope'];
+    ViewerController.$inject = ['ngDialog', '$log', 'TextImageResource', '$scope', '$rootScope', 'paginationService'];
 
-    function ViewerController (ngDialog, $log, TextImageResource, $scope, $rootScope) {
+    function ViewerController (ngDialog, $log, TextImageResource, $scope, $rootScope, paginationService) {
         var vm = this;
 
-        vm.sample = {};
         vm.textImages = TextImageResource.query();
         vm.selectedImage = null;
         vm.isShowFullImage = false;
+        vm.pageQuery = null;
 
         vm.openImagesUploadDialog = openImagesUploadDialog;
         vm.deleteAll = deleteAll;
         vm.select = select;
+        vm.openSelected = openSelected;
         vm.openFullView = openFullView;
         vm.closeFullView = closeFullView;
+        vm.searchPage = searchPage;
 
         activate();
         ////////////////////////////////////////
@@ -58,6 +60,7 @@
             }
 
             vm.selectedImage = vm.textImages[index];
+            vm.selectedImage.index = index;
             vm.selectedImage.isSelected = true;
         }
 
@@ -75,5 +78,19 @@
             $rootScope.$broadcast("viewer/closeFullView");
         }
 
+        function searchPage() {
+            var decodedPageNum = paginationService.decode(vm.searchQuery);
+
+            angular.forEach(vm.textImages, function (obj, i) {
+                if (obj.page_number == decodedPageNum)
+                    openFullView(i);
+            });
+
+            vm.searchQuery = null
+        }
+
+        function openSelected() {
+            openFullView(vm.selectedImage.index)
+        }
     }
 })();

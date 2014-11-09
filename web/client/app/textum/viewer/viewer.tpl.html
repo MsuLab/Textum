@@ -11,13 +11,18 @@
         <nav class="galleryMenu">
             <ul id="normal-view-menu">
                 <li>
-                    <span ng-hide="vm.isShowFullImage" ng-click="vm.openImagesUploadDialog()" class="btn btn-sm btn-success addImage"
+                    <span ng-hide="vm.isShowFullImage"
+                          ng-click="vm.openImagesUploadDialog()"
+                          class="btn btn-sm btn-success addImage"
                           title="Добавить страницы в галерею">
                         <span class="glyphicon glyphicon-plus glyphicon-white"></span>
                     </span>
                 </li>
                 <li>
-                    <span ng-hide="vm.isShowFullImage" class="btn btn-sm btn-info full-view-switch" title="Режим просмотра изображения">
+                    <span ng-hide="vm.isShowFullImage"
+                          ng-click="vm.openSelected()"
+                          class="btn btn-sm btn-info full-view-switch"
+                          title="Режим просмотра изображения">
                         <span class="glyphicon glyphicon-stop"></span>
                     </span>
                 </li>
@@ -73,11 +78,14 @@
             </ul>
         </div>
 
-        <form id="search-page">
-            <input type="text" placeholder="Перейти к&hellip;"/>
-            <span class="btn btn-small btn-primary" title="Найти и отобразить страницу">
+        <form class="form-inline" id="search-page" ng-submit="vm.searchPage()">
+            <input class="form-control col-md-3"
+                   type="text"
+                   placeholder="Перейти к&hellip;"
+                   ng-model="vm.searchQuery"/>
+            <button type="submit" class="btn btn-primary">
                 <span class="glyphicon glyphicon-search"></span>
-            </span>
+            </button>
         </form>
     </div>
 </div>
