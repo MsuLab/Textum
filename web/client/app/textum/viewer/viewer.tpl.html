@@ -5,8 +5,6 @@
 <div ng-controller="ViewerController as vm" class="col-lg-6 rightView">
     <div class="jumbotron">
         <h3>Рукопись</h3>
-
-        <input id="isReversePagination" type="checkbox" checked> Оборотная пагинация.
         <hr/>
         <nav class="galleryMenu">
             <ul id="normal-view-menu">
@@ -32,7 +30,8 @@
                     </a>
                 </li> -->
                 <li>
-                    <span class="btn btn-sm btn-danger clear-gallery" title="Очистить галерею"
+                    <span ng-hide="vm.isShowFullImage"
+                          class="btn btn-sm btn-danger clear-gallery" title="Очистить галерею"
                             ng-click="vm.deleteAll()">
                         <span class="glyphicon glyphicon-trash glyphicon-white"></span>
                     </span>

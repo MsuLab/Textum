@@ -3,7 +3,7 @@
     <li class="fullImage">
         <span class="page-num">{{vmFull.idx }} {{ vmFull.textImage.page_number | pagination}}</span>
         <img src="{{ vmFull.textImage.url }}" alt="{{ vmFull.textImage.page_number }}">
-        <form id="pageNumInput1">
+        <form ng-show="false" id="pageNumInput1">
             <input type="text">
         </form>
         <span class="btn btn-sm btn-danger" title="Удалить изображение">

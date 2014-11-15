@@ -25,7 +25,9 @@
         wodo.editorOptions = {
             loadCallback: load,
             saveCallback: save,
-            allFeaturesEnabled: true
+            allFeaturesEnabled: true,
+            hyperlinkEditingEnabled: false,
+            imageEditingEnabled: false
         };
 
         activate();
